@@ -1,3 +1,8 @@
+require 'kindle_fortune/version'
+
+require 'json'
+require 'kindlecollections'
+
 class KindleFortune
   DEFAULT_UPDATED_DATAFILE = '/Volumes/Kindle/documents/My Clippings.txt'.freeze
   DEFAULT_CURRENT_DATAFILE = '/Users/athityakumar/.config/kindle_fortune_extracts.json'.freeze
@@ -52,5 +57,3 @@ class KindleFortune
     File.open(@current_datafile, 'a') { |file| file.write(JSON.pretty_generate(@extracts)) }
   end
 end
-
-puts(KindleFortune.new(updated_datafile: ARGV[0], current_datafile: ARGV[1]).fetch_cookie)

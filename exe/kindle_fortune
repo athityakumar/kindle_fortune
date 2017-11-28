@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require 'kindle_fortune'
+puts(KindleFortune.new(updated_datafile: ARGV[0], current_datafile: ARGV[1]).fetch_cookie)
