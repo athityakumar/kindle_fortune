@@ -4,8 +4,9 @@ require 'json'
 require 'kindleclippings'
 
 class KindleFortune
+  USERNAME                 = `whoami`.strip
   DEFAULT_UPDATED_DATAFILE = '/Volumes/Kindle/documents/My Clippings.txt'.freeze
-  DEFAULT_CURRENT_DATAFILE = '/Users/athityakumar/.config/kindle_fortune_extracts.json'.freeze
+  DEFAULT_CURRENT_DATAFILE = "/Users/#{USERNAME}/.config/kindle_fortune.json".freeze
 
   def initialize(updated_datafile:, current_datafile:)
     @current_datafile = current_datafile || DEFAULT_CURRENT_DATAFILE
