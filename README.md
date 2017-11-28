@@ -22,7 +22,13 @@ A Ruby CLI gem that provides fortune cookie messages on your Terminal, based on 
 
 [(Back to top)](#table-of-contents)
 
+1. With default arguments : `kindle_fortune`
 
+![image](https://user-images.githubusercontent.com/17109060/33320930-ca3235a6-d469-11e7-8595-aa628a88a75e.png)
+
+2. With path arguments : `kindle_fortune [PATH]`
+
+`[PATH]` is the absolute path to your `My collections.txt` file of your Kindle device.
 
 # Installation
 
@@ -32,7 +38,9 @@ A Ruby CLI gem that provides fortune cookie messages on your Terminal, based on 
 
 2. Install the [kindle_fortune](https://rubygems.org/gems/kindle_fortune/) ruby gem with `gem install kindle_fortune`
 
-3. Start using `kindle_fortune` :tada:
+3. Preferably, install the `cowsay` CLI.
+
+4. Start using `kindle_fortune` :tada:
 
 # Updating
 
