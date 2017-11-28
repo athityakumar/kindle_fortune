@@ -16,7 +16,7 @@ class KindleFortune
     if File.exist?(@updated_datafile) then prepare_extracts
     else import_extracts
     end
-    
+
     raise 'No Kindle highlights detected' unless File.exist?(@current_datafile)
     fortune_cookie = @extracts[rand(@extracts.count)]
     pretty_print(fortune_cookie)
@@ -30,17 +30,18 @@ class KindleFortune
 
   def prepare_extracts
     @extracts =
-      KindleClippings::Parser.new
-        .parse_file(@updated_datafile)
-        .select { |clipping| clipping.type== :Highlight }
-        .map do |clipping|
-          {
-            'book'     => clipping.book_title,
-            'author'   => clipping.author,
-            'location' => clipping.location,
-            'content'  => clipping.content
-          }
-        end
+      KindleClippings::Parser
+      .new
+      .parse_file(@updated_datafile)
+      .select { |clipping| clipping.type== :Highlight }
+      .map do |clipping|
+        {
+          'book'     => clipping.book_title,
+          'author'   => clipping.author,
+          'location' => clipping.location,
+          'content'  => clipping.content
+        }
+      end
     store_extracts
   end
 
