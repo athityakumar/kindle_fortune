@@ -1,7 +1,7 @@
 require 'kindle_fortune/version'
 
 require 'json'
-require 'kindlecollections'
+require 'kindleclippings'
 
 class KindleFortune
   DEFAULT_UPDATED_DATAFILE = '/Volumes/Kindle/documents/My Clippings.txt'.freeze
@@ -25,12 +25,10 @@ class KindleFortune
   private
 
   def import_extracts
-    require 'json'
     @extracts = JSON.parse(File.read(@current_datafile))
   end
 
   def prepare_extracts
-    require 'kindleclippings'
     @extracts =
       KindleClippings::Parser.new
         .parse_file(@updated_datafile)
@@ -52,7 +50,6 @@ class KindleFortune
   end
 
   def store_extracts
-    require 'json'
     File.delete(@current_datafile) if File.exist?(@current_datafile)
     File.open(@current_datafile, 'a') { |file| file.write(JSON.pretty_generate(@extracts)) }
   end
